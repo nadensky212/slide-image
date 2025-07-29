@@ -150,5 +150,5 @@ router.post('/notification-handler', async (req, res) => {
 
 // --- Bagian Wajib untuk Netlify ---
 
-app.use('/.netlify/functions/api', router);
+app.use('/api/', router);
 module.exports.handler = serverless(app);
