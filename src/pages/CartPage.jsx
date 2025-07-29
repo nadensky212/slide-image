@@ -65,18 +65,23 @@ const CartPage = () => {
   }
 
   return (
-    <div className="cart-page">
-      <h2>Keranjang Belanja</h2>
-      {/* ... sisa kode JSX ... */}
-      <div className="cart-summary">
-        <h3>Total: {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalPrice)}</h3>
-        <button onClick={handleCheckout} className="checkout-button">
-          <button onClick={() => removeFromCart(item.id)}>Hapus</button>
-          Lanjut ke Pembayaran
-        </button>
-        {/* ... sisa tombol ... */}
+<div className="cart-items">
+  {items.map(item => ( // <-- `item` didefinisikan di sini
+    // Semua yang ada di dalam sini bisa menggunakan `item`
+    <div key={item.id} className="cart-item">
+      <img src={item.imageUrl} alt={item.title} />
+      <div className="item-details">
+        <h4>{item.title}</h4>
+        <p>
+          {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price)} x {item.quantity}
+        </p>
       </div>
+      {/* Pastikan tombol hapus juga ada di dalam map ini */}
+      <button onClick={() => removeFromCart(item.id)}>Hapus</button>
     </div>
+  ))} {/* <-- `item` tidak bisa digunakan lagi setelah ini */}
+</div>
+   
   );
 };
 
