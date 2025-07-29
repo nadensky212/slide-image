@@ -71,6 +71,7 @@ const CartPage = () => {
       <div className="cart-summary">
         <h3>Total: {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalPrice)}</h3>
         <button onClick={handleCheckout} className="checkout-button">
+          <button onClick={() => removeFromCart(item.id)}>Hapus</button>
           Lanjut ke Pembayaran
         </button>
         {/* ... sisa tombol ... */}
